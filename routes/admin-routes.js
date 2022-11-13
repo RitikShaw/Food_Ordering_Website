@@ -9,7 +9,7 @@ router.get('/', userController.redirectHome);
 router.get('/home',userController.gethome);
 
 router.get('/login', function (req, res) {
-    res.send("Welcome Node JS");
+    res.render('user/login');
 });
 
 router.get('/signup', userController.getSignup);
