@@ -1,112 +1,63 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: black;
-}
+<!DOCTYPE>
+<html lang="en">
+  <link rel="stylesheet" href="/css/bootstrap.min.css" />
+  <head>
+    <title>DESIDHABA</title>
+  </head>
+  <body>
+    <div class="container-fluid" style="background-color: white; ">
+      <div class="row h-100">
+        <div class="col-md-6 h-100">
+          <div class="mt-4">
+            <b class="ms-4" style=" font-weight: bolder; font-size: 25px; color: #005B30;">Desi</b>
+            <b style=" margin: -5px; padding: 0px; font-weight: bolder; font-size: 25px; color: black;">Dhaba</b>
+          </div>
+          <form style="margin-top: 0px; margin-left:140px;" action="/user/signup" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+              <div class="h-3 fw-bold" style="font-size: 30px;">
+                Create Account
+              </div>
 
-* {
-  box-sizing: border-box;
-}
+              <label class="mt-3" for="ID"><b>First Name</b></label>
+              <br>
+              <input class="mt-2 form-control w-75 " type="text" placeholder="First Name " fname="fname" required>
+              
+              <label class="mt-3" for="ID"><b>Last Name</b></label>
+              <br>
+              <input class="mt-2 form-control w-75 " type="text" placeholder="Last Name " lname="lname" required>
 
-/* Add padding to containers */
-.container {
-  padding: 16px;
-  background-color: white;
-}
+              <label class="mt-3" for="ID"><b>Email</b></label>
+              <br>
+              <input class="mt-2 form-control w-75 " type="text" placeholder="Enter email " email="email" required>
 
-/* Full-width input fields */
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;
-}
+              <label class="mt-3" for="ID"><b>First Name</b></label>
+              <br>
+              <input class="mt-2 form-control w-75 " type="text" placeholder="Phone number " phone="phone" required>
+              
+              <label class="mt-3" for="ID"><b>Password</b></label>
+              <br>
+              <input class="mt-2 form-control w-75 " type="password" placeholder="Enter password " password="password" required>
 
-input[type=text]:focus, input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
-}
+              <label class="mt-3" for="ID"><b>Confirm Password</b></label>
+              <br>
+              <input class="mt-2 form-control w-75 " type="password" placeholder="Confirm Passsword" cpassword="cpassword" required>
 
-/* Overwrite default styles of hr */
-hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
-}
-
-/* Set a style for the submit button */
-.registerbtn {
-  background-color: #04AA6D;
-  color: white;
-  padding: 16px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-}
-
-.registerbtn:hover {
-  opacity: 1;
-}
-
-/* Add a blue text color to links */
-a {
-  color: dodgerblue;
-}
-
-/* Set a grey background color and center the text of the "sign in" section */
-.signin {
-  background-color: #f1f1f1;
-  text-align: center;
-}
-</style>
-</head>
-<body>
-
-  <form action="/user/signup" method="post" enctype="multipart/form-data">
-    <div class="container">
-        <br>
-        <br>
-        <h1>Register</h1>
-        <p>Please fill in this form to create an account.</p>
-        <hr>
-
-        <label for="name"><b>Name</b></label>
-        <input type="text" placeholder="Enter Name" name="name" id="name" required>
-
-        <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="email" id="email" required>
-
-        <label for="name"><b>Phone</b></label>
-        <input type="text" placeholder="Enter Phone" name="phone" id="phone" required>
-
-        <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" id="password" required>
-
-        <label for="profile_image"><b>Profile Image</b></label>
-        <input type="file" accept="image/*"  name="profile_image" id="profile_image">
-
-        <hr>
-
-        <button type="submit" class="registerbtn">Register</button>
+              <div class=" w-75 mt-4">
+                <b  style="margin-left: 110px; font-weight: bold; opacity: 0.8;">forgot password</b>
+                <b style=" font-weight: 400;">||</b>
+                <b style=" padding: 0px; font-weight: bold;color: #005B30;">Register</b>
+              </div>
+              <br >
+              <button class="form-control  w-75" style="border-radius: 5px; color: white; background-color: #005B30;" type="submit">Sign in</button>
+            
+              
+            </div>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <img class= "w-100 h-100 " src="/images/login_background.jpeg" alt="Dosa Image">
+        </div>
+      </div>
     </div>
-
-    <div class="container signin">
-        <p>Already have an account? <a href="/login">Sign in</a>.</p>
-    </div>
-</form>
-  
-  
-  <div class="container signin">
-    <p>Already have an account? <a href="#">Sign in</a>.</p>
-  </div>
-</form>
-
-</body>
+  </body>
 </html>
