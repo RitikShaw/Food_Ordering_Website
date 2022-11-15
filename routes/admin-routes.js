@@ -8,9 +8,7 @@ router.get('/', userController.redirectHome);
 
 router.get('/home',userController.gethome);
 
-router.get('/login', function (req, res) {
-    res.render('user/login');
-});
+router.get('/login', userController.getLogin);
 
 router.get('/signup', userController.getSignup);
 
