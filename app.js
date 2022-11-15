@@ -25,6 +25,8 @@ var server = http.createServer(app);
 
 app.use(adminRoutes.routes);
 
+// app.use(flash());
+
 server.listen(PORT, function (err) {
     if (err) throw err;
     console.log('Server running on port : ' + PORT);

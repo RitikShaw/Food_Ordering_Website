@@ -20,15 +20,6 @@ var userSchema = new Schema({
     password: {
         type: String
     },
-    profile_image: {
-        type: String,
-        default: ""
-    },
-    status: {
-        type: Boolean,
-        default: true,
-        enum: [true, false]
-    },
     isDeleted: {
         type: Boolean,
         default: false,
