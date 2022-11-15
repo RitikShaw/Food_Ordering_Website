@@ -4,6 +4,7 @@ const fs = require('fs');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const adminRoutes = require('./routes/admin-routes');
+const path= require('path');
 
 
 dotenv.config();
@@ -13,7 +14,9 @@ const app = express();
 
 app.set("views", __dirname + '/views');
 app.set("view engine", "ejs");
+app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 
+app.use(express.static(path.join(__dirname,"public")));
 app.use(express.urlencoded({"extended":true}));
 app.use(bodyParser.urlencoded({"extended":true}));
 app.use(bodyParser.json());
