@@ -28,6 +28,8 @@ router.post('/user/login',request_param.any(),userController.userLogin);
 router.get('/signup', userController.getSignup);
 router.post('/user/signup', uploadfiles.any(), userController.userSignup);
 
+router.get('/menu', userController.getMenu);
+
 module.exports = {
     routes: router
 };
