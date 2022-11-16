@@ -12,6 +12,8 @@ router.get('/login', userController.getLogin);
 
 router.get('/signup', userController.getSignup);
 
+router.get('/menu', userController.getMenu);
+
 module.exports = {
     routes: router
 };
