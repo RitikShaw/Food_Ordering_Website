@@ -12,6 +12,8 @@ const PORT = process.env.PORT;
 
 const app = express();
 
+require('./config/database')();
+
 app.set("views", __dirname + '/views');
 app.set("view engine", "ejs");
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));

@@ -16,18 +16,54 @@ class userController{
 
     async getSignup(req,res){
         try {
-            res.render('user/signup')
-            res.send("Welcome signup")
+            await res.render('user/signup');
+            
         } catch (error) {
-            throw error
+            throw error;
+        }
+    }
+
+    async userSignup(req,res){
+        try {
+            
+            if(req.files.length > 0){
+
+                req.body.profile_img = req.files[0].filename;
+            }
+
+            console.log(req.body,'==req.body==')
+
+            let userdata = await new userModel(req.body);
+            let saveuser = await userdata.save();
+
+            console.log(userdata, '==saveUser==');
+
+            if (saveuser != null) {
+                res.redirect("/home");
+            } else {
+                res.redirect("/signup");
+            }
+
+            
+        } catch (error) {
+            throw error;
         }
     }
 
     async getLogin(req,res){
+        try {
+            
+            res.render('user/login')
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    async userLogin(req,res){
 
         try {
 
-            res.render('user/login')
+            
 
             console.log(req.body, '===req.body===');
             
@@ -43,7 +79,7 @@ class userController{
                 console.log(req.body.password,'==pasword==')
                 if (req.body.password==userData.password) {
                     
-                    res.redirect("user/home");
+                    res.redirect("/home");
                 } else {
                     console.log("Email or password is wrong!");
                     req.flash('error', 'Email or password is wrong!');

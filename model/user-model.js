@@ -20,7 +20,11 @@ var userSchema = new Schema({
     password: {
         type: String
     },
-    isDeleted: {
+    profile_img: {
+        type: String,
+        default: ""
+    },
+    isdeleted: {
         type: Boolean,
         default: false,
         enum: [true, false]
@@ -30,4 +34,4 @@ var userSchema = new Schema({
     versionKey: false
 });
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('users', userSchema);
