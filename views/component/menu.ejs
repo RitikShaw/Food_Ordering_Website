@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <head>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <title>Menu</title>
+    </head>
+    <body style="background-color: #F0E8E0;">
+
+        <div class="container-fluid ">
+            <h1 class=" m-5 text-center">All Menu</h1>
+            <div class="d-flex justify-content-center ">
+                
+            
+                <div class="m-1 mb-5 p-2 form-control d-flex justify-content-around w-50" style="background-color: white;">
+                    <a class="btn nav-link fw-bold"  style="border-color: transparent; width: 100px; color: black; padding-left: 30px;">Non Veg</a>
+                    <a class="btn nav-link fw-bold"  style="border-color: transparent; width: 100px; color: black; padding-left: 30px;">Veg</a>
+                    <a class="btn nav-link fw-bold"  style="border-color: transparent; width: 100px; color: black; padding-left: 30px;">Offers</a>
+                </div>
+             </div>
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-10">
+                        <form action="/component/menu" method="post" enctype="multipart/form-data">
+                            <div class="" style="float: left;" id="display_items">
+                                <p>Veg</p>
+                                <% for(let count = 0; count <= 9; count++ ){ %>
+                                    <%- include('../partials/items') %>
+                                <% } %>
+                                
+                            </div>
+                            <div class="" style="float: left;" id="display_items">
+                                <p>Non-veg</p>
+                                <% for(let count = 0; count <= 9; count++ ){ %>
+                                    <%- include('../partials/items') %>
+                                <% } %>
+                                
+                            </div>
+                            <button class="btn form-control fw-bold" type="submit" style="background-color: #005B30; color: white;">Add to Cart</button>
+                        </form>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+
+            </div>
+        
+        </div>
+        
+        <script>
+            
+
+            
+            
+
+        </script>
+    </body>
+</html>

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const bcrypt = require('bcrypt');
 
 var userSchema = new Schema({
     name: {
@@ -33,5 +34,13 @@ var userSchema = new Schema({
     timestamps: true,
     versionKey: false
 });
+
+userSchema.methods.generatehash = function(password){
+    return bcrypt.hashSync(password,bcrypt.genSaltSync(8));
+};
+
+userSchema.methods.comparehash= function(password,hashpassword){
+    return bcrypt.compareSync(password,hashpassword);
+};
 
 module.exports = mongoose.model('users', userSchema);
