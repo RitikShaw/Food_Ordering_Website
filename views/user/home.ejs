@@ -23,7 +23,6 @@
             border: none;
             cursor: pointer;
             border-radius: 10px;
-            width: auto;
         }
 
         .dropdown {
@@ -51,6 +50,10 @@
         .dropdown-content a:hover {background-color: #f1f1f1;}
         .dropdown:hover .dropdown-content {display: block;}
         .dropdown:hover .dropbtn {background-color: #F4F2EF;}
+
+        a{
+            text-decoration: none;
+        }
     </style>
 </head>
 <body style="background-color: #F4F2EF;">
@@ -61,8 +64,9 @@
             <div class="container collapse navbar-collapse" id="navbarSupportedContent" >
                 
                     <a class="nav-link active" aria-current="page" href="#" style="color: black; padding-left: 30px;" active>Home</a>
-                    <a class="nav-link" href="#" style="color: black; padding-left: 30px;">Link</a>
-                    <a class="nav-link" href="desidhaba/menu" style="color: black; padding-left: 30px;">Menu</a>
+                    
+                    <a class="nav-link" onclick="menuscroll()" style="color: black; padding-left: 30px;">Menu</a>
+                    <a class="nav-link" type="button" onclick="aboutscroll()" style="color: black; padding-left: 30px;">About Us</a>
                     
 
                         <img src="/images/avatar.png" alt="Avatar" style="border-radius: 50%; width:30px; margin-left: 700px;">
@@ -72,7 +76,7 @@
                               <a href="#">My account</a>
                               <%if(token==null){%>
                         
-                                <a class="nav-link" href="/signup" style="width: 100px; color: black; padding-left: 30px;">Sign Up</a>
+                                <a class="nav-link" href="/signup" style="width: 100px; color: black; padding-left: 30px;">SignUp</a>
                                 <a class="nav-link" href="/login" style="color: black; padding-left: 30px;">Login</a>
                               
                               <%}else{%>
@@ -101,7 +105,7 @@
         
     </div>
     <!-- Menu -->
-    <div class="container" style="height: 600px;">
+    <div id="menuSection" class="container" style="height: 600px;">
         <div class="row">
             <div class="col-md-12">
                 <div class="container" style="padding-top: 100px;">
@@ -110,26 +114,26 @@
                 </div>
             </div>
         </div>
-        <div class="row" style="margin-top: 70px;  margin-left: 80px; margin-right: 20px;">    
+        <div class="row" style="margin-top: 70px;  margin-left: 70px; margin-right: 20px;">    
             <div class="col-md-3" style="margin-right: 20px; padding: 10px; padding-left: 50px; background-color: #CFDED7; height: 300px; width: 250px;">
                 <img style="width: 150px; height: 170px;" src="/images/veg.png">
-                <b style="font-size: 40px; color: #005B30; padding-left: 40px;">Veg</b><br>
-                <b style="font-size: 10px; color: #000000; padding-left: 55px;">View all ></b>
+                <a href="/desidhaba/menu"><b style="font-size: 40px; color: #005B30; padding-left: 40px;">Veg</b><br>
+                <b style="font-size: 10px; color: #000000; padding-left: 55px;">View all ></b></a>
             </div>
             <div class="col-md-3" style="margin-right: 20px; padding: 10px; padding-left: 50px; background-color: #f0dedd; height: 300px; width: 250px;">
                 <img style="width: 170px; height: 110px; margin-top: 50px;" src="/images/nonveg.png">
-                <b style="font-size: 40px; color: #E76464; padding-left: 0px;">Non Veg</b><br>
-                <b style="font-size: 10px; color: #000000; padding-left: 55px;">View all ></b>
+                <a href="/desidhaba/menu"><b style="font-size: 40px; color: #E76464; padding-left: 0px;">Non Veg</b><br>
+                <b style="font-size: 10px; color: #000000; padding-left: 55px;">View all ></b></a>
             </div>
             <div class="col-md-3" style="margin-right: 20px; padding: 10px; padding-left: 50px; background-color: #005B30; height: 300px; width: 300px;">
                 <img style="width: 110px; height: 110px; margin-top: 50px; margin-left: 50px; margin-bottom: 20px;" src="/images/offer.png">
-                <b style="font-size: 30px; color: #ffffff; padding-left: 15px;" >200+ offers</b><br>
-                <b style="font-size: 10px; color: #ffffff; padding-left: 70px;">View all ></b>
+                <a href="/desidhaba/menu"><b style="font-size: 30px; color: #ffffff; padding-left: 15px;" >200+ offers</b><br>
+                <b style="font-size: 10px; color: #ffffff; padding-left: 70px;">View all ></b></a>
             </div>
             <div class="col-md-3" style="margin-right: 10px; padding: 10px; padding-left: 50px; background-color: #CFDED7; height: 300px; width: 300px;">
                 <img style="width: 110px; height: 110px; margin-top: 50px; margin-left: 50px; margin-bottom: 20px;" src="/images/fast-food.png">
-                <b style="font-size: 30px; color: #005B30; padding-left: 15px;" >Whats New ?</b><br>
-                <b style="font-size: 10px; color: #005B30; padding-left: 70px;">View all ></b>
+                <a href="/desidhaba/menu"><b style="font-size: 30px; color: #005B30; padding-left: 15px;" >Whats New ?</b><br>
+                <b style="font-size: 10px; color: #005B30; padding-left: 70px;">View all ></b></a>
             </div>
         </div>
     </div>
@@ -188,6 +192,13 @@
     function aboutscroll(){   
         
         document.getElementById('AboutSection').scrollIntoView({
+            behavior: "smooth"
+        });
+    }
+
+    function menuscroll(){   
+        
+        document.getElementById('menuSection').scrollIntoView({
             behavior: "smooth"
         });
     }

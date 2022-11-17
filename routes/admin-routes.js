@@ -32,7 +32,7 @@ router.post('/user/login',request_param.any(),userController.userLogin);
 router.get('/signup',verifyAuth, userController.getSignup);
 router.post('/user/signup', uploadfiles.any(), userController.userSignup);
 
-router.get('/desidhaba/menu',verifyToken, userController.getMenu);
+router.get('/desidhaba/menu', userController.getMenu);
 router.post('/component/menu', request_param.any(), userController.userMenu);
 
 router.get('/logout',verifyToken, userController.userLogout);
