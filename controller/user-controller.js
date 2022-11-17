@@ -104,6 +104,14 @@ class userController{
             throw error;
         }
     }
+    async getMenu(req,res){
+
+        try {
+            res.render('component/menu')
+        } catch (error) {
+            throw error;
+        }
+    }
 };
 
 module.exports = new userController();
