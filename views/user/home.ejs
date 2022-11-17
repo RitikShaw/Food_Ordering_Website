@@ -23,6 +23,7 @@
             border: none;
             cursor: pointer;
             border-radius: 10px;
+            width: auto;
         }
 
         .dropdown {
@@ -61,16 +62,26 @@
                 
                     <a class="nav-link active" aria-current="page" href="#" style="color: black; padding-left: 30px;" active>Home</a>
                     <a class="nav-link" href="#" style="color: black; padding-left: 30px;">Link</a>
+                    <a class="nav-link" href="desidhaba/menu" style="color: black; padding-left: 30px;">Menu</a>
                     
-                    <img src="/images/avatar.png" alt="Avatar" style="border-radius: 50%; width:30px; margin-left: 850px;">
-                    <div class="dropdown" style="margin-left: 10px;">
-                        <button class="dropbtn">Debanshi saha</button>
-                        <div class="dropdown-content">
-                          <a href="#">Link 1</a>
-                          <a href="#">Link 2</a>
-                          <a href="#">Link 3</a>
+
+                        <img src="/images/avatar.png" alt="Avatar" style="border-radius: 50%; width:30px; margin-left: 700px;">
+                        <div class="dropdown" style="margin-left: 10px;">
+                            <button class="dropbtn">Debanshi saha</button>
+                            <div class="dropdown-content">
+                              <a href="#">My account</a>
+                              <%if(token==null){%>
+                        
+                                <a class="nav-link" href="/signup" style="width: 100px; color: black; padding-left: 30px;">Sign Up</a>
+                                <a class="nav-link" href="/login" style="color: black; padding-left: 30px;">Login</a>
+                              
+                              <%}else{%>
+                                
+                                  <a class="nav-link" href="/logout" style="color: black; padding-left: 30px;">logout</a>
+                                
+                              <%}%>
+                            </div>
                         </div>
-                    </div>
                 
             </div>
         </div>
@@ -124,18 +135,20 @@
     </div>
 
     <!-- About us -->
-    <div class="container" style="height: 700px;">
+    <div id="AboutSection" class="container" style="height: 700px;">
         <div class="row">
             <div class="col-md-12">
                 <div class="container" style="padding-top: 70px;">
                     <img style="width: 40px; height: 40px; margin-left: 20px;" src="/images/about.png">
                     <b style="font-size: 35px; margin-left: 20px;">About Us</b>
+                     
                 </div>
             </div>
         </div>
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
+                    <p><% user_info%></p>
                     <p style="margin-top: 70px; margin-right:30px; margin-left: 20px; font-weight: 500;" >Organizer, Craig Stephen, opened the first Organization Name Restaurant in Los Alamitos, California on September 27, 1977. Today, there are 37 areas all through Arizona, California, Illinois, Louisiana, Nevada, Oregon, Tennessee, and Washington.<br>
                         DeciDhaba Restaurants are well known with a substantial gathering of people including families, kids, seniors, and business experts. Our benevolent condition is perfect for praising unique events, facilitating a business lunch, or assembling for a flavorful dinner with loved ones.<br>
                         Open day by day for lunch and dinner, Company Name offers a choice of naturally arranged things utilizing just the best fixings accessible. Top picks incorporate Certified Angus Beef®, crisp fish, rotisserie chicken, infant back pork ribs.<br>
@@ -157,5 +170,27 @@
         </div>
     </div>
 
+
+
+    <!-- <script>
+
+        function aboutscroll(){
+            $("#About").click(function() {
+                            $('html, body').animate({
+                                scrollTop: $("#AboutSection").offset().top
+                            }, 2000);
+                        });
+        }
+        
+    </script> -->
+
+    <script> 
+    function aboutscroll(){   
+        
+        document.getElementById('AboutSection').scrollIntoView({
+            behavior: "smooth"
+        });
+    }
+        </script> 
 </body>
 </html>
