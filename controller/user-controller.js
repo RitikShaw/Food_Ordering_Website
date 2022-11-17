@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const userModel = require('../model/user-model');
 const User = new userModel();
+const foodmodel = require('../model/food-model');
+const Food = new foodmodel();
 const jwt = require('jsonwebtoken');
 var menu = {};
 
@@ -77,7 +79,17 @@ class userController{
                 "isdeleted": false
             });
 
+            let foodMenu = await foodmodel.find({
+                "isdeleted" : false
+            });
+
+            let menu_length = await foodmodel.countDocuments({"isdeleted":false})
+
+            req.session.item_length = menu_length;
+
             console.log(userData, '====userData====')
+            console.log(foodMenu,"==menu==")
+            console.log(menu_length,"==length==")
 
             if (userData!=null) {
 
@@ -97,7 +109,13 @@ class userController{
                         {expiresIn: session_time});
 
                     req.session.token = jwtToken;
-                    req.session.user_info = userData;
+                    let ui= req.session.user_info = userData;
+                    console.log("==ui==")
+                    console.log(ui,"==ui==")
+
+                    let fm=req.session.menu_info=foodMenu;
+                    console.log("==menu==")
+                    console.log(fm,"==menu==")
 
                     console.log(jwtToken,"==jwt==")
                     // req.flash('success', 'Login Successfully ');
@@ -142,9 +160,9 @@ class userController{
             console.log(req.body,"==menu==")
             req.session.user_menu = req.body;
 
-            res.redirect('/home')
-            menu = req.body
-            console.log(menu,"==usermenu==")
+            // res.redirect('/cart')
+            let m=req.session.cart = req.body
+            console.log(m,"==usermenu==")
         } catch (error) {
             throw error
         }
@@ -154,6 +172,14 @@ class userController{
         try {
             req.session.destroy();
             res.redirect("/");
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    async getCart(req,res){
+        try {
+            res.render('component/cart')
         } catch (err) {
             throw err;
         }

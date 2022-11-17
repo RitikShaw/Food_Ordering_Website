@@ -1,23 +1,20 @@
 <!DOCTYPE html>
+
 <html lang="en">
     <head>
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="/css/bootstrap.min.css" />
     </head>
     <body>
-
-        <div id="container">
-
+        <div class="card">
+            <h5 class="card-header">Bill</h5>
+            <div class="card-body">
+              <div>
+                <h1 class="card-text"><%= cart%></h1>
+              </div>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
         </div>
-        
-        <script>
-                var htmlElements = "";
-                for (var i = 0; i < 6; i++) {
-                htmlElements += '<div class="">Hello</div>';
-                }
-                var container = document.getElementById("container");
-                container.innerHTML = htmlElements
-        </script>
     </body>
 </html>

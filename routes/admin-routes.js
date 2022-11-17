@@ -37,9 +37,7 @@ router.post('/component/menu', request_param.any(), userController.userMenu);
 
 router.get('/logout',verifyToken, userController.userLogout);
 
-router.get('/cart',function(req,res){
-    res.render('component/cart')
-})
+router.get('/cart', userController.getCart);
 
 module.exports = {
     routes: router

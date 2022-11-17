@@ -26,23 +26,85 @@
                     <div class="col-md-1">
                     </div>
                     <div class="col-md-10">
-                        <form action="/component/menu" method="post" enctype="multipart/form-data">
-                            <div class="" style="float: left;" id="display_items">
-                                <p>Veg</p>
-                                <% for(let count = 0; count <= 9; count++ ){ %>
-                                    <%- include('../partials/items') %>
-                                <% } %>
+                        <div>
+                            <form action="/component/menu" method="post" enctype="multipart/form-data">
+                                <div class="" style="float: left;" id="display_items">
+                                    <h2 class=" fw-bold">Veg</h2>
+                                    <% for(let count = 0; count <item_length; count++ ){ %>
+                                        
+                                        <% if(menu_info[count].type=='veg'){ %>
+                                            <div class="card-body mt-2 mb-2 mx-4" style="float: left; background-color: white; border-radius: 8px;"> 
+                                                <div class="d-flex justify-content-between">
+                                                    <img class="card-img-top" style=" width: 150px; height: 150px;" src="/images/dosa.png" alt="Card image cap">
                                 
-                            </div>
-                            <div class="" style="float: left;" id="display_items">
-                                <p>Non-veg</p>
-                                <% for(let count = 0; count <= 9; count++ ){ %>
-                                    <%- include('../partials/items') %>
-                                <% } %>
+                                                    <p style="font-size: 22px; color: green; font-weight: bolder;"><%=menu_info[count].rating%></p>
+                                                </div>
                                 
-                            </div>
-                            <button class="btn form-control fw-bold" type="submit" style="background-color: #005B30; color: white;">Add to Cart</button>
-                        </form>
+                                              <h5 class="card-title w-100" style=" font-size: 26px; font-weight: bolder;"><%=menu_info[count].name%></h5>
+                                              <hr style="margin-top: 2px; width:80%; height: 5px;">
+                                
+                                
+                                              <div class="bottom d-flex justify-content-center">
+                                                    <p class="text-decoration-line-through mx-1" style="font-weight: bold; color: red; float: left; font-size: 22px;">150</p>
+                                                    <p class="ms-2" style="font-weight: bold; color: green; float: left; font-size: 22px;"><%=menu_info[count].Price%></p>
+                                                    <div class="input-group " style="margin-bottom: 30px; margin-left: 45px; float: left; width: 100px; height: 10px;">
+                                                    
+                                                        
+                                
+                                                        <input name="<%=menu_info[count].name%>" type="number" id="qty_input" class="form-control form-control-sm"
+                                                        style="background-color: white;" value="0" min="0" max="8">
+                                
+                                                        
+                                                    </div>
+                                                </div>
+                                
+                                
+                                            </div>
+                                        <% } %>
+                                    <% } %>
+                                    
+                                </div>
+                                
+                                <div class="" style="float: left;" id="display_items">
+                                    
+                                    <h2 class="fw-bold">Non-veg</h2>
+                                    <% for(let count = 0; count <item_length ; count++ ){ %>
+                                        
+                                        <% if(menu_info[count].type=='nonveg'){ %>
+                                            <div class="card-body mt-2 mb-2 mx-4" style="float: left; background-color: white; border-radius: 8px;"> 
+                                                <div class="d-flex justify-content-between">
+                                                    <img class="card-img-top" style=" width: 150px; height: 150px;" src="/images/dosa.png" alt="Card image cap">
+                                
+                                                    <p style="font-size: 22px; color: green; font-weight: bolder;"><%=menu_info[count].rating%></p>
+                                                </div>
+                                
+                                              <h5 class="card-title w-100" style=" font-size: 26px; font-weight: bolder;"><%=menu_info[count].name%></h5>
+                                              <hr style="margin-top: 2px; width:80%; height: 5px;">
+                                
+                                
+                                              <div class="bottom d-flex  justify-content-center">
+                                                    <!-- <p class="text-decoration-line-through mx-1" style="font-weight: bold; color: red; float: left; font-size: 22px;">150</p> -->
+                                                    <p class="ms-2" style="font-weight: bold; color: green; float: left; font-size: 22px;"><%=menu_info[count].Price%></p>
+                                                    <div class="input-group " style="margin-bottom: 30px; margin-left: 45px; float: left; width: 100px; height: 10px;">
+                                                    
+                                                        
+                                
+                                                        <input name="<%=menu_info[count].name%>" type="number" id="qty_input" class="form-control form-control-sm"
+                                                        style="background-color: white;" value="0" min="0" max="8">
+                                
+                                                        
+                                                    </div>
+                                                </div>
+                                
+                                
+                                            </div>
+                                        <% } %>
+                                    <% } %>
+                                    
+                                </div>
+                                <a href="/cart" class="btn form-control fw-bold" type="submit" style="background-color: #005B30; color: white;">Add to Cart</a>
+                            </form>
+                        </div>
                     </div>
                     <div class="col-md-1"></div>
                 </div>
