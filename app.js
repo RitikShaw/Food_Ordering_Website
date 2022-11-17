@@ -38,7 +38,8 @@ app.use((req,res,next)=>{
     res.locals.user_menu = req.session.user_menu;
     res.locals.menu_info = req.session.menu_info;
     res.locals.item_length = req.session.item_length;
-    res.locals.cart= req.session.cart;
+    res.locals.cart= req.session.cart_info;
+    console.log(req.session.cart_info,"==log==");
 
     // res.locals.messages = req.flash();
     next();

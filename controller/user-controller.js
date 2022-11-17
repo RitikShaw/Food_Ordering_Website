@@ -160,9 +160,11 @@ class userController{
             console.log(req.body,"==menu==")
             req.session.user_menu = req.body;
 
-            // res.redirect('/cart')
-            let m=req.session.cart = req.body
+            
+            let m=req.session.cart_info = req.body
             console.log(m,"==usermenu==")
+
+            res.redirect('/cart')
         } catch (error) {
             throw error
         }

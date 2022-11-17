@@ -1,26 +1,23 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-var foodSchema = new Schema({
-    rating: {
+var cartSchema = new Schema({
+    user_id: {
         type: String,
         required: true,
         default: ""
     },
-    name: {
+    product_id: {
         type: String,
         required: true,
-        default: ""
+        default: "",
+        items: {
+            type: String,
+            required: true,
+            default: ""
+        },
     },
-    price: {
-        type: String,
-        required: true,
-        default: ""
-    },
-    food_img: {
-        type: String,
-        default: ""
-    },
+    
     isdeleted: {
         type: Boolean,
         default: false,
@@ -28,4 +25,4 @@ var foodSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model('menus', foodSchema);
+module.exports = mongoose.model('menus', cartSchema);
