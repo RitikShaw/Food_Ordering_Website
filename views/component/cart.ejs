@@ -93,20 +93,25 @@
         <div class="container-fluid">
           <h1 class=" m-5 text-center">Bill</h1>
             <div class="card-body">
-              
-              <div class="container">
-                <div class="row">
-                  <div class="bg-white col-md-2 p-4" align="center" style="height: 200px;">
-                    <img src="/images/KFC.png" style="height: 100px; width:100px">
-                    <h3 class="mx-4" >Rice</h3>
-                  </div>
-                  <div class="bg-white col-md-10 p-4" align="right" style="height: 200px;">
-                    <div style="margin-top: 50px;">
-                      <h4 style="margin-right: 20px;">100 * 3 = 300</h4>
+              <% for(let count = 0; count <Object.keys(users_cart.products).length; count++ ){ %>
+
+                <div class="container shadow-sm my-3">
+                  <div class="row">
+                    <div class="bg-white col-md-2 p-4" align="center" style="height: 200px;">
+                      <img src="/images/KFC.png" style="height: 100px; width:100px">
+                      <h3 class="mx-4" ><%=Object.keys(users_cart.products)[count]%></h3>
+                    </div>
+                    <div class="bg-white col-md-10 p-4" align="right" style="height: 200px;">
+                      <div style="margin-top: 50px;">
+                        <h4 style="margin-right: 20px;"><%=Object.values(users_cart.products)[count]%></h4>
+                        <h4 style="margin-right: 20px;"><%=menu_info.find(fruit => fruit.name === 'Biryani')%></h4>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+
+              <% } %>
+              
               <div class="container">
                 <div class="row">
                   <div class="bg-white col-md-12 p-4" align="right" style="height: 100px; margin-top: 30px;">
@@ -125,6 +130,9 @@
                       </div>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
     </body>

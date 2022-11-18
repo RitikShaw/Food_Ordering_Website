@@ -3,8 +3,11 @@ const userModel = require('../model/user-model');
 const User = new userModel();
 const foodmodel = require('../model/food-model');
 const Food = new foodmodel();
+const userCart = require('../model/usercart-model');
+const UserCart = new userCart();
 const jwt = require('jsonwebtoken');
-var menu = {};
+var user_id;
+var product_info;
 
 class userController{
 
@@ -79,17 +82,17 @@ class userController{
                 "isdeleted": false
             });
 
-            let foodMenu = await foodmodel.find({
-                "isdeleted" : false
-            });
+            // let foodMenu = await foodmodel.find({
+            //     "isdeleted" : false
+            // });
 
-            let menu_length = await foodmodel.countDocuments({"isdeleted":false})
+            // let menu_length = await foodmodel.countDocuments({"isdeleted":false})
 
-            req.session.item_length = menu_length;
+            // req.session.item_length = menu_length;
 
             console.log(userData, '====userData====')
-            console.log(foodMenu,"==menu==")
-            console.log(menu_length,"==length==")
+            // console.log(foodMenu,"==menu==")
+            // console.log(menu_length,"==length==")
 
             if (userData!=null) {
 
@@ -109,13 +112,13 @@ class userController{
                         {expiresIn: session_time});
 
                     req.session.token = jwtToken;
-                    let ui= req.session.user_info = userData;
+                    user_id= req.session.user_info = userData;
                     console.log("==ui==")
-                    console.log(ui,"==ui==")
+                    console.log(user_id,"==ui==")
 
-                    let fm=req.session.menu_info=foodMenu;
-                    console.log("==menu==")
-                    console.log(fm,"==menu==")
+                    // let fm=req.session.menu_info=foodMenu;
+                    // console.log("==menu==")
+                    // console.log(fm,"==menu==")
 
                     console.log(jwtToken,"==jwt==")
                     // req.flash('success', 'Login Successfully ');
@@ -147,7 +150,23 @@ class userController{
 
     async getMenu(req,res){
         try {
-            res.render('component/menu')
+
+            let foodMenu = await foodmodel.find({
+                "isdeleted" : false
+            });
+
+            let menu_length = await foodmodel.countDocuments({"isdeleted":false})
+
+            req.session.item_length = menu_length;
+
+            
+            console.log(menu_length,"==length==")
+
+            product_info=req.session.menu_info=foodMenu;
+                    console.log("==menu==")
+                    console.log(product_info,"==menu_info==")
+
+            await res.render('component/menu')
         } catch (error) {
             
         }
@@ -157,13 +176,43 @@ class userController{
 
         try {
 
-            console.log(req.body,"==menu==")
+            
             req.session.user_menu = req.body;
 
             
-            let m=req.session.cart_info = req.body
-            console.log(m,"==usermenu==")
+            let selected_items=req.session.cart_info = req.body
+            console.log(selected_items,"==usermenu==")
 
+            Object.keys(selected_items).forEach(key => {
+                if (selected_items[key] === '') {
+                  delete selected_items[key];
+                }
+            });
+
+            console.log(selected_items,"==cart==")
+
+            let user_ids = user_id.name;
+
+            let selected_items_keys = Object.keys(selected_items);
+            // console.log(selected_items_keys,"==selected_items_keys==")
+            // console.log(selected_items_keys.length,"==selected_items_keys length==")
+            
+            let user_cart_temp = {
+                user_name : user_ids,
+                products : selected_items
+            }
+
+            let user_cart = await new userCart(user_cart_temp)
+            let save_cart = await user_cart.save();
+
+            console.log(save_cart,"==user_cart")
+            // let product_id = product_info.map(function (el){return el._id;});
+            // console.log(product_id,"==product_id==")
+            // console.log(user_ids,"==user_id==")
+
+            req.session.users_cart= save_cart;
+            let products = Object.keys(save_cart.products).length;
+            console.log(products,"==length==")
             res.redirect('/cart')
         } catch (error) {
             throw error

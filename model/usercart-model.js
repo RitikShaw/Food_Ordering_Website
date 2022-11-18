@@ -2,20 +2,15 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 var cartSchema = new Schema({
-    user_id: {
+    user_name: {
         type: String,
         required: true,
         default: ""
     },
-    product_id: {
-        type: String,
+    products: {
+        type: Object,
         required: true,
         default: "",
-        items: {
-            type: String,
-            required: true,
-            default: ""
-        },
     },
     
     isdeleted: {
@@ -25,4 +20,4 @@ var cartSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model('menus', cartSchema);
+module.exports = mongoose.model('carts', cartSchema);

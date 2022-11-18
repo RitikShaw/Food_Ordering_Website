@@ -13,7 +13,7 @@ var foodSchema = new Schema({
         default: ""
     },
     price: {
-        type: String,
+        type: Number,
         required: true,
         default: ""
     },
