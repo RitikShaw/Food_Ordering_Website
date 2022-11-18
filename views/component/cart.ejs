@@ -104,7 +104,10 @@
                     <div class="bg-white col-md-10 p-4" align="right" style="height: 200px;">
                       <div style="margin-top: 50px;">
                         <h4 style="margin-right: 20px;"><%=Object.values(users_cart.products)[count]%></h4>
-                        <h4 style="margin-right: 20px;"><%=menu_info.find(fruit => fruit.name === 'Biryani')%></h4>
+                        <%var obj=menu_info.find(key => key.name === 'Biryani');%>
+                        <h4 style="margin-right: 20px;">
+                          <%=obj.price%>
+                        </h4>
                       </div>
                     </div>
                   </div>
@@ -126,7 +129,7 @@
                     <div class="col-md-12 p-4" align="right" style="margin-top: 30px;">
                       <div>
                         
-                        <a href="#" class="btn" style="background-color: green; color: #ffffff; font-size: 20px;">Check Out</a>
+                        <a href="/home" class="btn" style="background-color: green; color: #ffffff; font-size: 20px;">Check Out</a>
                       </div>
                     </div>
                   </div>
