@@ -235,6 +235,15 @@ class userController{
             throw err;
         }
     }
+
+    async getprofile(req,res){
+        try {
+            res.render('user/userProfile')
+        } catch (err) {
+            throw err;
+            
+        }
+    }
 };
 
 module.exports = new userController();

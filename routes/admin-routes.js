@@ -37,7 +37,9 @@ router.post('/component/menu', request_param.any(), userController.userMenu);
 
 router.get('/logout',verifyToken, userController.userLogout);
 
-router.get('/cart', userController.getCart);
+router.get('/cart',verifyToken, userController.getCart);
+
+router.get('/desidhaba/my_profile', verifyToken,userController.getprofile)
 
 module.exports = {
     routes: router

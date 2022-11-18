@@ -70,7 +70,7 @@
     
                                 <img src="/images/avatar.png" alt="Avatar" style="border-radius: 50%; width:30px; margin-left: 600px;">
                                 <div class="dropdown" style="margin-left: 10px;">
-                                    <button class="dropbtn">Debanshi saha</button>
+                                    <button class="dropbtn"><%= user_info ? user_info.name: 'User'%></button>
                                     <div class="dropdown-content">
                                     <a href="#">My account</a>
                                     <%if(token==null){%>
@@ -132,10 +132,10 @@
                                                     <div class="input-group " style="margin-bottom: 30px; margin-left: 45px; float: left; width: 100px; height: 10px;">
                                                     
                                                         
-                                
-                                                        <input name="<%=menu_info[count].name%>" type="number" id="qty_input" class="form-control form-control-sm"
-                                                        style="background-color: white;" placeholder="ADD" min="0" max="8">
-                                
+                                                        <%if(token!=null){%>
+                                                            <input name="<%=menu_info[count].name%>" type="number" id="qty_input" class="form-control form-control-sm"
+                                                            style="background-color: white;" placeholder="ADD" min="0" max="8">
+                                                            <%}%> 
                                                         
                                                     </div>
                                                 </div>
@@ -171,8 +171,10 @@
                                                     
                                                         
                                 
-                                                        <input name="<%=menu_info[count].name%>" type="number" id="qty_input" class="form-control form-control-sm"
-                                                        style="background-color: white;" placeholder="ADD" min="0" max="8">
+                                                        <%if(token!=null){%>
+                                                            <input name="<%=menu_info[count].name%>" type="number" id="qty_input" class="form-control form-control-sm"
+                                                            style="background-color: white;" placeholder="ADD" min="0" max="8">
+                                                            <%}%>
                                 
                                                         
                                                     </div>
@@ -184,7 +186,12 @@
                                     <% } %>
                                     
                                 </div>
-                                <button class="btn my-4  form-control fw-bold" type="submit" style=" background-color: #005B30; color: white;">Add to Cart</button>
+
+                                <%if(token==null){%>
+                                    <a href="/login"><button class="btn my-4  form-control fw-bold" type="button" style=" background-color: #005B30; color: white;">Login</button></a>
+                                    <%}else{%>
+                                        <button class="btn my-4  form-control fw-bold" type="submit" style=" background-color: #005B30; color: white;">Add to Cart</button>
+                                     <%}%>
                             </form>
                         </div>
                     </div>
