@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-var userSchema = new Schema({
+var foodSchema = new Schema({
     rating: {
         type: String,
         required: true,
@@ -13,7 +13,7 @@ var userSchema = new Schema({
         default: ""
     },
     price: {
-        type: String,
+        type: Number,
         required: true,
         default: ""
     },
@@ -28,4 +28,4 @@ var userSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model('menus', userSchema);
+module.exports = mongoose.model('menus', foodSchema);

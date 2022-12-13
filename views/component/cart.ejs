@@ -93,22 +93,28 @@
         <div class="container-fluid">
           <h1 class=" m-5 text-center">Bill</h1>
             <div class="card-body">
-              <div>
-                <h1 class=""><%= cart%></h1>
-              </div>
-              <div class="container">
-                <div class="row">
-                  <div class="bg-white col-md-2 p-4" align="center" style="height: 200px;">
-                    <img src="/images/KFC.png" style="height: 100px; width:100px">
-                    <h3 class="mx-4" >Rice</h3>
-                  </div>
-                  <div class="bg-white col-md-10 p-4" align="right" style="height: 200px;">
-                    <div style="margin-top: 50px;">
-                      <h4 style="margin-right: 20px;">100 * 3 = 300</h4>
+              <% for(let count = 0; count <Object.keys(users_cart.products).length; count++ ){ %>
+
+                <div class="container shadow-sm my-3">
+                  <div class="row">
+                    <div class="bg-white col-md-2 p-4" align="center" style="height: 200px;">
+                      <img src="/images/KFC.png" style="height: 100px; width:100px">
+                      <h3 class="mx-4" ><%=Object.keys(users_cart.products)[count]%></h3>
+                    </div>
+                    <div class="bg-white col-md-10 p-4" align="right" style="height: 200px;">
+                      <div style="margin-top: 50px;">
+                        <h4 style="margin-right: 20px;"><%=Object.values(users_cart.products)[count]%></h4>
+                        <%var obj=menu_info.find(key => key.name === 'Biryani');%>
+                        <h4 style="margin-right: 20px;">
+                          <%=obj.price%>
+                        </h4>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+
+              <% } %>
+              
               <div class="container">
                 <div class="row">
                   <div class="bg-white col-md-12 p-4" align="right" style="height: 100px; margin-top: 30px;">
@@ -123,10 +129,13 @@
                     <div class="col-md-12 p-4" align="right" style="margin-top: 30px;">
                       <div>
                         
-                        <a href="#" class="btn" style="background-color: green; color: #ffffff; font-size: 20px;">Check Out</a>
+                        <a href="/home" class="btn" style="background-color: green; color: #ffffff; font-size: 20px;">Check Out</a>
                       </div>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
     </body>

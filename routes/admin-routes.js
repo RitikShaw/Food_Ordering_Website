@@ -32,12 +32,14 @@ router.post('/user/login',request_param.any(),userController.userLogin);
 router.get('/signup',verifyAuth, userController.getSignup);
 router.post('/user/signup', uploadfiles.any(), userController.userSignup);
 
-router.get('/desidhaba/menu', userController.getMenu);
+router.get('/desidhaba/menu',userController.getMenu);
 router.post('/component/menu', request_param.any(), userController.userMenu);
 
 router.get('/logout',verifyToken, userController.userLogout);
 
-router.get('/cart', userController.getCart);
+router.get('/cart',verifyToken, userController.getCart);
+
+router.get('/desidhaba/my_profile', verifyToken,userController.getprofile)
 
 module.exports = {
     routes: router

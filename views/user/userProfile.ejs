@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+    </head>
+
+    <body>
+        <%- include ('../partials/items')%>
+        <form action="/user/profile/update" method="post" enctype="multipart/form-data">
+            <label for="name"><b>Name</b></label>
+            <p name="phone" id="phone" ><%= user_info.name%></p>
+
+            <label for="email"><b>Email</b></label>
+            <p name="phone" id="phone" ><%= user_info.email%></p>
+
+            <label for="name"><b>Phone</b></label>
+            <p name="phone" id="phone" ><%= user_info.phone%></p>
+
+           
+
+            
+
+            <%if(user_info.profile_image ==null && user_info.profile_image !="" ){%>
+                <img width="200px" height="200px" src="/uploads/user/<%= user_info.profile_img%>">
+            <%}%>
+
+        </form>
+    </body>
+</html>
