@@ -6,125 +6,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="mystyle.css">
-<<<<<<< HEAD
-    <title>AAAA</title>
-    <style>
-        /* body {
-            font-family: "Roboto";
-        } */
-
-        .dropbtn {
-            background-color: #ffffff;
-            color: rgb(0, 0, 0);
-            padding-top: 5px;
-            padding-bottom: 5px;
-            padding-left: 20px;
-            padding-right: 20px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-            border-radius: 10px;
-        }
-
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            right: 0;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-        .dropdown-content a:hover {background-color: #f1f1f1;}
-        .dropdown:hover .dropdown-content {display: block;}
-        .dropdown:hover .dropbtn {background-color: #F4F2EF;}
-
-        a{
-            text-decoration: none;
-        }
-    </style>
-=======
     <title>DesiDhaba</title>
     
->>>>>>> e811964044549288e1c118140a77cbcc79bcffff
 </head>
 <body style="background-color: #F4F2EF;">
     
     <!-- Navbar -->
-<<<<<<< HEAD
-    <nav class="navbar navbar-expand-lg" style="background-color: #F4F2EF; padding-top: 20px">
-        <div class="container-fluid">
-            <a class="navbar-brand"><b style="color: #005B30; padding-left: 80px;">Desi</b><b style="color: black;">Dhaba</b></a>  
-            <div class="container collapse navbar-collapse" id="navbarSupportedContent" >
-                
-                    <a class="nav-link" aria-current="page" href="#" style="color: black; padding-left: 30px;" active>Home</a>
-                    
-                    <a class="nav-link" onclick="menuscroll()" style="color: black; padding-left: 30px;">Menu</a>
-                    <a class="nav-link" type="button" onclick="aboutscroll()" style="color: black; padding-left: 30px;">About Us</a>
-                    
-
-                        <img src="/images/avatar.png" alt="Avatar" style="border-radius: 50%; width:30px; margin-left: 700px;">
-                        <div class="dropdown" style="margin-left: 10px;">
-                            <button class="dropbtn"><%= user_info ? user_info.name : 'User'%></button>
-                            <div class="dropdown-content">
-                              <a href="#">My account</a>
-                              <%if(token==null){%>
-                        
-                                <a class="nav-link" href="/signup" style="width: 100px; color: black; padding-left: 30px;">SignUp</a>
-                                <a class="nav-link" href="/login" style="color: black; padding-left: 30px;">Login</a>
-                              
-                              <%}else{%>
-                                
-                                  <a class="nav-link" href="/logout" style="color: black; padding-left: 30px;">logout</a>
-                                
-                              <%}%>
-                            </div>
-                        </div>
-                
-            </div>
-        </div>
-    </nav>
-=======
     <%- include ('../partials/items')%>
->>>>>>> e811964044549288e1c118140a77cbcc79bcffff
     <!-- Banner -->
     <div class="container-fluid bg-white" style="width: 100%; height: 500px;">
         <div class="container" style="padding-top: 150px; padding-left: 80px; width: 50%; float: left;">
             <b style="font-size: 60px; color: #005B30;">Flat 60% off !!</b>
             <p style="font-size: 30px; color: #005B30;">Savour the othentic Flavours of South India</p>
             <a href="/desidhaba/menu"><button style="background-color:#005B30; color: white; font-size: 25px;
-<<<<<<< HEAD
-            margin-top: 45px; 
-            padding-top: 8px; padding-bottom: 8px; padding-left: 20px; padding-right: 20px; 
-            border: #005B30; border-radius: 10px;"><b>Order Now</b></button></a>
-=======
                 margin-top: 45px; 
                 padding-top: 8px; padding-bottom: 8px; padding-left: 20px; padding-right: 20px; 
                 border: #005B30; border-radius: 10px;"><b>Order Now</b></button></a>
->>>>>>> e811964044549288e1c118140a77cbcc79bcffff
         </div>
         
             <img style="float: right; width: 600px; height: 700px; padding-bottom: 200px;" src="/images/dosa.png">
         
     </div>
     <!-- Menu -->
-<<<<<<< HEAD
-=======
     <!-- Menu -->
->>>>>>> e811964044549288e1c118140a77cbcc79bcffff
     <div id="menuSection" class="container" style="height: 600px;">
         <div class="row">
             <div class="col-md-12">
