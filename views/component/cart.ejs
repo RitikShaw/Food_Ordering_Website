@@ -104,7 +104,8 @@
                     <div class="bg-white col-md-10 p-4" align="right" style="height: 200px;">
                       <div style="margin-top: 50px;">
                         <h4 style="margin-right: 20px;"><%=Object.values(users_cart.products)[count]%></h4>
-                        <%var obj=menu_info.find(key => key.name === 'Biryani');%>
+                        <%var prd=Object.keys(users_cart.products)[count]%>
+                        <%var obj=menu_info.find(key => key.name === prd);%>
                         <h4 style="margin-right: 20px;">
                           <%=obj.price%>
                         </h4>
