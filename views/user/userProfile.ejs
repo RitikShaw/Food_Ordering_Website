@@ -1,29 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <style>
+            .card{
+                margin-top: 3em;
+                padding: 30px;
+                background-color: white;
+                border-color: white;
+                box-shadow: 5px 5px 5px rgba(0,0,0,0.3);
+                
+            }
+        </style>
 
     </head>
 
-    <body>
+    <body style="background-color: #F4F2EF;">
         <%- include ('../partials/items')%>
-        <form action="/user/profile/update" method="post" enctype="multipart/form-data">
-            <label for="name"><b>Name</b></label>
-            <p name="phone" id="phone" ><%= user_info.name%></p>
-
-            <label for="email"><b>Email</b></label>
-            <p name="phone" id="phone" ><%= user_info.email%></p>
-
-            <label for="name"><b>Phone</b></label>
-            <p name="phone" id="phone" ><%= user_info.phone%></p>
-
-           
-
+        <div class="container card">
             
+                <form action="/user/profile/update" method="post" enctype="multipart/form-data">
+                    <div class="row">
+                    <div class="col-md-6">
+                        <%if(user_info.profile_image ==null && user_info.profile_image !="" ){%>
+                            <img width="100%" height="500px" src="/uploads/user/<%= user_info.profile_img%>" style="padding: 10px;">
+                        <%}%>
+                    </div>
+                    <div class="col-md-6" style="padding:20px; padding-top:40px;">
+                        <div>
+                            <label for="name"></label>
+                            <p name="phone" id="phone" style="font-size:40px; font-weight: 600;"><%= user_info.name%></p>
+                        </div>
 
-            <%if(user_info.profile_image ==null && user_info.profile_image !="" ){%>
-                <img width="200px" height="200px" src="/uploads/user/<%= user_info.profile_img%>">
-            <%}%>
+                        <div style="margin-top: 10px; color: #393939de; font-weight: 600; font-size: 15px;"><p><%= user_info.createdAt%><br>
+                            Mostly Ordered items:
+                                 Biryani
+                                 chicken<br>
+                                
+                            Total Orders till date: 05</p></div>
+                        
+                        <div style="margin-top: 20px; color: #393939de;">
+                            <img src="/images/email.png" height="15px">
+                            <b name="phone" id="phone" >Address</b>
+                        </div>
 
-        </form>
+                        <div style="margin-top: 10px; color: #393939de;">
+                            <img src="/images/location.png" height="15px">
+                            <b name="phone" id="phone" ><%= user_info.email%></b>
+                        </div>
+
+                        
+                        
+                        <div style="margin-top: 10px; color: #393939de;">
+                            <img src="/images/phone-call.png" height="15px">
+                            <b name="phone" id="phone" ><%= user_info.phone%></b>
+                        </div>
+                        <div style="margin-top: 20px;">
+                            <button style="width: 100%; height: 40px; background-color: #005B30; color: white; border-radius: 5px;">Edit</button>
+                        </div>
+                    </div>
+                    
+                </form>
+            </div>
+            
+        </div>
     </body>
 </html>
