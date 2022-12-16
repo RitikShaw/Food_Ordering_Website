@@ -7,7 +7,9 @@ const userCart = require('../model/usercart-model');
 const UserCart = new userCart();
 const jwt = require('jsonwebtoken');
 var user_id;
-var product_info;
+
+
+let user_shoplist= {};
 
 class userController{
 
@@ -17,6 +19,19 @@ class userController{
 
         try {
             res.redirect('/home')
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async gethome(req,res){
+
+        try {
+            let url = req.url.split('/')
+            console.log(url[1],"==url")
+            res.render('user/home',{
+                page_url: url[1]
+            })
         } catch (error) {
             throw error;
         }
@@ -55,7 +70,6 @@ class userController{
             } else {
                 res.redirect("/signup");
             }
-
             
         } catch (error) {
             throw error;
@@ -82,17 +96,8 @@ class userController{
                 "isdeleted": false
             });
 
-            // let foodMenu = await foodmodel.find({
-            //     "isdeleted" : false
-            // });
-
-            // let menu_length = await foodmodel.countDocuments({"isdeleted":false})
-
-            // req.session.item_length = menu_length;
-
             console.log(userData, '====userData====')
-            // console.log(foodMenu,"==menu==")
-            // console.log(menu_length,"==length==")
+            
 
             if (userData!=null) {
 
@@ -116,21 +121,17 @@ class userController{
                     console.log("==ui==")
                     console.log(user_id,"==ui==")
 
-                    // let fm=req.session.menu_info=foodMenu;
-                    // console.log("==menu==")
-                    // console.log(fm,"==menu==")
-
                     console.log(jwtToken,"==jwt==")
-                    // req.flash('success', 'Login Successfully ');
+                    
                     res.redirect("/home");
                 } else {
                     console.log("Email or password is wrong!");
-                    // req.flash('error', 'Email or password is wrong!');
+                    
                     res.redirect("/login");
                 }                
             } else {
                 console.log("No user found!");
-                // req.flash('error', 'No user found in our database!');
+                
                 res.redirect("/login");
             }
 
@@ -139,34 +140,27 @@ class userController{
         }
     }
 
-    async gethome(req,res){
-
-        try {
-            res.render('user/home')
-        } catch (error) {
-            throw error;
-        }
-    }
-
     async getMenu(req,res){
         try {
+
+            let url = req.url.split('/')
 
             let foodMenu = await foodmodel.find({
                 "isdeleted" : false
             });
 
-            let menu_length = await foodmodel.countDocuments({"isdeleted":false})
-
-            req.session.item_length = menu_length;
-
+            let menu_length = await foodmodel.countDocuments({"isdeleted":false})          
             
             console.log(menu_length,"==length==")
 
-            product_info=req.session.menu_info=foodMenu;
+            req.session.menu_info=foodMenu;
                     console.log("==menu==")
-                    console.log(product_info,"==menu_info==")
+                    console.log(foodMenu,"==menu_info==")
 
-            await res.render('component/menu')
+            await res.render('component/menu',{
+                page_url: url[1],
+                item_length : menu_length
+            })
         } catch (error) {
             
         }
@@ -174,13 +168,10 @@ class userController{
 
     async userMenu(req,res){
 
-        try {
-
-            
+        try {            
             req.session.user_menu = req.body;
-
             
-            let selected_items=req.session.cart_info = req.body
+            let selected_items=req.body
             console.log(selected_items,"==usermenu==")
 
             Object.keys(selected_items).forEach(key => {
@@ -191,11 +182,7 @@ class userController{
 
             console.log(selected_items,"==cart==")
 
-            let user_ids = user_id.name;
-
-            let selected_items_keys = Object.keys(selected_items);
-            // console.log(selected_items_keys,"==selected_items_keys==")
-            // console.log(selected_items_keys.length,"==selected_items_keys length==")
+            let user_ids = user_id.name;          
             
             let user_cart_temp = {
                 user_name : user_ids,
@@ -203,16 +190,10 @@ class userController{
             }
 
             let user_cart = await new userCart(user_cart_temp)
-            let save_cart = await user_cart.save();
+            user_shoplist = await user_cart.save();
 
-            console.log(save_cart,"==user_cart")
-            // let product_id = product_info.map(function (el){return el._id;});
-            // console.log(product_id,"==product_id==")
-            // console.log(user_ids,"==user_id==")
-
-            req.session.users_cart= save_cart;
-            let products = Object.keys(save_cart.products).length;
-            console.log(products,"==length==")
+            console.log(user_shoplist,"==user_cart")
+        
             res.redirect('/cart')
         } catch (error) {
             throw error
@@ -230,7 +211,16 @@ class userController{
 
     async getCart(req,res){
         try {
-            res.render('component/cart')
+            let url = req.url.split('/')
+
+            console.log(user_shoplist,"==user shoplist==")
+            let items_count = Object.keys(user_shoplist.products).length;
+
+            res.render('component/cart',{
+                page_url: url[1],
+                products: user_shoplist.products,
+                product_count: items_count
+            });
         } catch (err) {
             throw err;
         }
@@ -238,7 +228,10 @@ class userController{
 
     async getprofile(req,res){
         try {
-            res.render('user/userProfile')
+            let url = req.url.split('/')
+            res.render('user/userProfile',{
+                page_url: url[1]
+            })
         } catch (err) {
             throw err;
             

@@ -58,54 +58,26 @@
     </head>
     <body style="background-color: #F4F2EF;">
       <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg" style="background-color: #F4F2EF; padding-top: 20px">
-        <div class="container-fluid">
-            <a class="navbar-brand"><b style="color: #005B30; padding-left: 80px;">Desi</b><b style="color: black;">Dhaba</b></a>  
-            <div class="container collapse navbar-collapse" id="navbarSupportedContent" >
-                
-                    <a class="nav-link active" aria-current="page" href="/home" style="color: black; padding-left: 30px;">Home</a>
-                    
-                    <a class="nav-link" onclick="menuscroll()" style="color: black; padding-left: 30px;">Menu</a>
-                    <a class="nav-link" type="button" onclick="aboutscroll()" style="color: black; padding-left: 30px;">About Us</a>
-                    
-
-                        <img src="/images/avatar.png" alt="Avatar" style="border-radius: 50%; width:30px; margin-left: 600px;">
-                        <div class="dropdown" style="margin-left: 10px;">
-                            <button class="dropbtn">Debanshi saha</button>
-                            <div class="dropdown-content">
-                            <a href="#">My account</a>
-                            <%if(token==null){%>
-                        
-                                <a class="nav-link" href="/signup" style="width: 100px; color: black; padding-left: 30px;">SignUp</a>
-                                <a class="nav-link" href="/login" style="color: black; padding-left: 30px;">Login</a>
-                            
-                            <%}else{%>
-                                
-                                <a class="nav-link" href="/logout" style="color: black; padding-left: 30px;">logout</a>
-                                
-                            <%}%>
-                            </div>
-                        </div>
-                
-                  </div>
-              </div>
-          </nav>
+     
+      <%- include ('../partials/navbar')%>
+      <!-- Navbar -->
+      
         <div class="container-fluid">
           <h1 class=" m-5 text-center">Bill</h1>
             <div class="card-body">
-              <% for(let count = 0; count <Object.keys(users_cart.products).length; count++ ){ %>
+              <% for(let count = 0; count <product_count; count++ ){ %>
 
                 <div class="container shadow-sm my-3">
                   <div class="row">
                     <div class="bg-white col-md-2 p-4" align="center" style="height: 200px;">
                       <img src="/images/KFC.png" style="height: 100px; width:100px">
-                      <h3 class="mx-4" ><%=Object.keys(users_cart.products)[count]%></h3>
+                      <h3 class="mx-4" ><%=Object.keys(products)[count]%></h3>
                     </div>
                     <div class="bg-white col-md-10 p-4" align="right" style="height: 200px;">
                       <div style="margin-top: 50px;">
-                        <h4 style="margin-right: 20px;"><%=Object.values(users_cart.products)[count]%></h4>
-                        <%var prd=Object.keys(users_cart.products)[count]%>
-                        <%var obj=menu_info.find(key => key.name === prd);%>
+                        <h4 style="margin-right: 20px;"><%=Object.values(products)[count]%></h4>
+                        <%var product_name=Object.keys(products)[count]%>
+                        <%var obj=menu_info.find(key => key.name === product_name)%>
                         <h4 style="margin-right: 20px;">
                           <%=obj.price%>
                         </h4>

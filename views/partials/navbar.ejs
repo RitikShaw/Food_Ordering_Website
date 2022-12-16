@@ -58,27 +58,35 @@
                 <a class="navbar-brand"><b style="color: #005B30; padding-left: 80px;">Desi</b><b style="color: black;">Dhaba</b></a>  
                 <div class="container collapse navbar-collapse" id="navbarSupportedContent" >
                     
-                        <a class="nav-link" aria-current="page" href="/home" style="color: black; padding-left: 30px;" active>Home</a>
+                        <a class="nav-link active" aria-current="page" href="/home" style="color: black; padding-left: 30px;">Home</a>
                         
-                        <a class="nav-link" onclick="menuscroll()" style="color: black; padding-left: 30px;">Menu</a>
-                        <a class="nav-link" type="button" onclick="aboutscroll()" style="color: black; padding-left: 30px;">About Us</a>
-                        
-    
-                            <img src="/images/avatar.png" alt="Avatar" style="border-radius: 50%; width:30px; margin-left: 700px;">
+                        <%if(page_url=='home'){%>
+
+                            <a class="nav-link" onclick="menuscroll()" style="color: black; padding-left: 30px;">Menu</a>
+                            <a class="nav-link" type="button" onclick="aboutscroll()" style="color: black; padding-left: 30px;">About Us</a>
+                            
+                            <%}else{%>
+
+                                <a class="nav-link" href="/desidhaba/menu" style="color: black; padding-left: 30px;">Menu</a>
+                                <a class="nav-link" type="button" onclick="aboutscroll()" style="color: black; padding-left: 30px;">About Us</a>
+                                
+                                <%}%>
+
+                            <img src="/images/avatar.png" alt="Avatar" style="border-radius: 50%; width:30px; margin-left: 600px;">
                             <div class="dropdown" style="margin-left: 10px;">
-                                <button class="dropbtn"><%= user_info ? user_info.name : 'User'%></button>
+                                <button class="dropbtn"><%= user_info ? user_info.name: 'User'%></button>
                                 <div class="dropdown-content">
-                                  <a href="/desidhaba/my_profile">My account</a>
-                                  <%if(token==null){%>
+                                <a href="/desidhaba/my_profile">My account</a>
+                                <%if(token==null){%>
                             
                                     <a class="nav-link" href="/signup" style="width: 100px; color: black; padding-left: 30px;">SignUp</a>
                                     <a class="nav-link" href="/login" style="color: black; padding-left: 30px;">Login</a>
-                                  
-                                  <%}else{%>
+                                
+                                <%}else{%>
                                     
-                                      <a class="nav-link" href="/logout" style="color: black; padding-left: 30px;">logout</a>
+                                    <a class="nav-link" href="/logout" style="color: black; padding-left: 30px;">logout</a>
                                     
-                                  <%}%>
+                                <%}%>
                                 </div>
                             </div>
                     

@@ -5,12 +5,12 @@ var cartSchema = new Schema({
     user_name: {
         type: String,
         required: true,
-        default: ""
+        
     },
     products: {
         type: Object,
         required: true,
-        default: "",
+        
     },
     
     isdeleted: {
